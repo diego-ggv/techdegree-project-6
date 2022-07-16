@@ -3,7 +3,7 @@
 // const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const start = document.querySelector('.start');
-const ul = phrase.children;
+const ul = document.querySelector('#phrase ul')
 
 // let missed = 0;
 
@@ -25,17 +25,11 @@ const getRandomPhraseAsArray = (arr) => {
   return array.split("");
 };
 
-// getRandomPhraseAsArray(phrases);
-getRandomPhraseAsArray(phrases);
-console.log(getRandomPhraseAsArray(phrases));
-
 // Add an array of strings to the display
 // Takes andy array as an argument
-
-
 const addPhraseToDisplay = (array) => {
-//
-//     // Loop through the array for each character in the array
+
+// Loop through the array for each character in the array
   for (let i = 0; i < array.length; i++) {
 //       // Create a LI element
     const li = document.createElement('li');
@@ -51,18 +45,18 @@ const addPhraseToDisplay = (array) => {
       // LI class equal to "letter"
       li.className = 'letter';
     }
-  ul.append(li);
+    ul.appendChild(li);
   }
-  // console.log();
-    return ul;
+
 };
 //
-  const phraseArray = getRandomPhraseAsArray(phrases);
-  addPhraseToDisplay(phraseArray);
-console.log(phraseArray);
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+console.log(phraseArray)
 
 // Check if the letter is in the phrase
 //   const checkLetter = () => {
+//
 //
 //   };
 
