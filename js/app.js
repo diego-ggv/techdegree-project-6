@@ -1,11 +1,11 @@
 // document.addEventListener("DOMContentLoaded", () => {
 
-// const qwerty = document.getElementById('qwerty');
+const qwerty = document.getElementById('qwerty');
 // const phrase = document.getElementById('phrase');
 const start = document.querySelector('.start');
 const ul = document.querySelector('#phrase ul');
 
-// let missed = 0;
+let missed = 0;
 
 // Start the Game
 start.addEventListener('click', (e) => {
@@ -30,7 +30,6 @@ const getRandomPhraseAsArray = (arr) => {
 
 // Add an array of strings to the display
 const addPhraseToDisplay = (array) => {
-
 // Loop through the array for each character in the array
   for (let i = 0; i < array.length; i++) {
     // Create a LI element
@@ -50,34 +49,36 @@ const addPhraseToDisplay = (array) => {
     // Appends LI element to UL node
     ul.appendChild(li);
   }
-
 };
 // Stores generated array in a new constant
-const phraseArray = getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(test);
 // Calls addPhraseToDisplay function and takes phraseArray as parameter
 addPhraseToDisplay(phraseArray);
 console.log(phraseArray);
 
 // Check if the letter is in the phrase
 const checkLetter = (btn) => {
-  const letterArr = document.getElementsByClassName('letter');
+  // const lettersArray = document.getElementsByClassName('letter');
+  const lettersArray = document.querySelectorAll('.letter');
   let matched = [];
 
-  for (let i = 0; i < letterArr.length; i++) {
+  for (let i = 0; i < lettersArray.length; i++) {
 
-    if (letterArr[i].textContent.includes(btn)) {
-      letterArr[i].className = 'show';
+    if (lettersArray[i].textContent.includes(btn.textContent)) {
+      lettersArray[i].className = 'show';
 
-      matched.push(letterArr[i]);
+      matched.push(lettersArray[i]);
     }
+    else {
+      matched = null;
+    }
+
   }
 
-  console.log(matched);
+  console.log(`matched value is ${matched}`);
   return matched;
 };
-
-
-checkLetter(test);
+// checkLetter(test);
 
 // check if the game has been won or lost
 //   const checkWin = () => {
@@ -88,6 +89,21 @@ checkLetter(test);
 
 
 // Listen for the onscreen keyboard to be clicked
+qwerty.addEventListener('click', (e) => {
 
+  if (e.target.tagName === "BUTTON") {
+    const button = e.target;
+    const letterFound = checkLetter(button);
+
+    button.className = "chosen";
+    button.disabled = true;
+
+    if (letterFound === null){
+      missed ++;
+      console.log(`you have missed ${missed} times`)
+    }
+  }
+
+});
 
 // });
