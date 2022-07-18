@@ -101,24 +101,27 @@ button:hover {
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
+.chosen:hover {
+  border: 2px solid transparent;
+}
 
 #btn__reset {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;
   border-radius: 5px;
-  font-size: var(--font-size-medium);
+  font-size: 20px;
 }
 
 /* Phrase */
 .letter {
   font-size: 60px;
+  background: #D2D2D2;
+  color: transparent;
   height: 65px;
   width: 65px;
   margin-top: 20px;
   margin-right: 5px;
-  background: #D2D2D2;
-  color: transparent;
   border-radius: 5px;
 }
 
@@ -128,12 +131,12 @@ button:hover {
 
 .show {
   font-size: 60px;
+  background: #D2D2D2;
+  color: #37474F;
   height: 65px;
   width: 65px;
   margin-top: 20px;
   margin-right: 5px;
-  background: #D2D2D2;
-  color: #37474F;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   transform: rotateY(360deg);

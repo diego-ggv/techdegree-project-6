@@ -3,7 +3,6 @@ const qwerty = document.getElementById('qwerty');
 const ul = document.querySelector('#phrase ul');
 const overlay = document.getElementById('overlay');
 let missed = 0;
-
 // Start the Game
 overlay.addEventListener('click', (e) => {
   if (e.target.tagName === "BUTTON") {
@@ -57,7 +56,7 @@ const addPhraseToDisplay = (array) => {
   }
 };
 // Stores generated array in a new constant
-const phraseArray = getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(test);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
 addPhraseToDisplay(phraseArray);
 console.log(phraseArray);
@@ -82,9 +81,11 @@ const checkWin = () => {
   const liLetter = document.getElementsByClassName('letter');
   const btnReset = document.querySelector('#btn__reset');
   const banner = document.querySelector('.title');
-
+  // const li = document.getElementsByTagName('li');
+  
   //TODO: cleanup code, DRY
   if (liLetter.length === 0) {
+    ul.style.display = 'none'
     overlay.className = 'win';
     overlay.style.display = 'flex';
     banner.textContent = "YOU WIN!";
@@ -92,6 +93,7 @@ const checkWin = () => {
     btnReset.className = 'restart';
   }
   if (missed >= 5) {
+    ul.style.display = 'none'
     overlay.className = 'lose';
     overlay.style.display = 'flex';
     banner.textContent = "GAME OVER!";

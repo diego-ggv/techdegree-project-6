@@ -11,12 +11,11 @@
 
 @mixin font($color:$color-keys){
   font-size: $font-size-large;
-
+  background: $color-neutral-light;
+  color: $color;
   height: 65px;
   width: 65px;
   margin-top: 20px;
   margin-right: 5px;
-  background: $color-neutral-light;
-  color: $color;
   border-radius: 5px;
 }
