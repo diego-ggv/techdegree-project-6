@@ -1,6 +1,6 @@
 const phrases = [
   "i have always imagined that paradise will be a kind of library",
-  // -by Jorgeluis Borges
+  // -by Jorge luis Borges
   "it is hard to fail but it is worse never to have tried to succeed",
   // -by Theodore Roosevelt yes
 
@@ -14,8 +14,8 @@ const phrases = [
   //—Maya Angelou
 ];
 
-const test = [
-  'will space',
-  'bull space',
-  'address spaces'
-];
+// const test = [
+//   'will space',
+//   'bull space',
+//   'address spaces'
+// ];

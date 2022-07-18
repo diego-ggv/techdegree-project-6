@@ -3,10 +3,10 @@
 // =============================================
 
 // Gives Images a popUp effect
-@mixin img-effect() {
+@mixin img-effect($transform: null) {
   transition: $transition;
-  transform: rotateY(360deg);
-
+  transform: $transform;
+@content;
 }
 
 @mixin font($color:$color-keys){

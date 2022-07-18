@@ -10,7 +10,7 @@
 
 .show {
   @include font();
-  @include img-effect();
+  @include img-effect($transform:rotateY(360deg));
 }
 
 #hide {
