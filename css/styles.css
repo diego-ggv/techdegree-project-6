@@ -99,7 +99,7 @@ button {
 
 /* Keyboard */
 
-.keyrow {
+.key-row {
   display: flex;
   justify-content: center;
 }
@@ -111,7 +111,7 @@ button {
   color: #FFFFFF;
 }
 
-.btn__reset {
+#btn__reset {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;

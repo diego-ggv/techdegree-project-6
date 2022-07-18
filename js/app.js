@@ -6,10 +6,21 @@ let missed = 0;
 
 // Start the Game
 overlay.addEventListener('click', (e) => {
-  if (e.target.tagName === "BUTTON"
-    && e.target.textContent.toLowerCase() === 'start game') {
-    overlay.style.display = "none";
+  if (e.target.tagName === "BUTTON") {
+    const button = e.target;
+    const action = button.className;
+    
+    const nameAction = {
+      start: () => {
+        overlay.style.display = "none";
+      },
+      restart: () => {
+        window.location.reload();
+      },
+    };
+    nameAction[action]();
   }
+    
 });
 
 // Return a random phrase from an array
@@ -69,32 +80,25 @@ const checkLetter = (btn) => {
 // check if the game has been won or lost
 const checkWin = () => {
   const liShow = document.getElementsByClassName('show');
-  const btnReset = document.querySelector('.btn__reset');
+  const btnReset = document.querySelector('#btn__reset');
   const banner = document.querySelector('.title');
 
+  //TODO: cleanup code, DRY
   if (phraseArray.length === liShow.length) {
     overlay.className = 'win';
     overlay.style.display = 'flex';
     banner.textContent = "YOU WIN!";
     btnReset.textContent = 'Restart Game';
-    console.log('Congrats you have won');
+    btnReset.className = 'restart'
   }
   if (missed >= 5) {
     overlay.className = 'lose';
     overlay.style.display = 'flex';
     banner.textContent = "GAME OVER!";
     btnReset.textContent = 'Restart Game';
+    btnReset.className = 'restart'
   }
-
 };
-
-// Listen for the restart game button to be pressed
-overlay.addEventListener('click', (button) => {
-  if (button.target.tagName === 'BUTTON'
-    && button.target.textContent.toLowerCase() === 'restart game') {
-    window.location.reload(true);
-  }
-});
 
 // Listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
@@ -113,7 +117,6 @@ qwerty.addEventListener('click', (e) => {
     }
     checkWin();
   }
-
 });
 
 // });
