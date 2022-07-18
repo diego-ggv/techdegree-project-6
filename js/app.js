@@ -58,7 +58,6 @@ console.log(phraseArray);
 
 // Check if the letter is in the phrase
 const checkLetter = (btn) => {
-  // const lettersArray = document.getElementsByClassName('letter');
   const lettersArray = document.querySelectorAll('.letter');
   let matched = null;
 
@@ -73,7 +72,6 @@ const checkLetter = (btn) => {
 
   return matched;
 };
-// checkLetter(test);
 
 // check if the game has been won or lost
 //   const checkWin = () => {
@@ -94,8 +92,10 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
 
     if (letterFound === null) {
+      const hearts = document.querySelectorAll('.tries img');
+
+      hearts[missed].src = 'images/lostHeart.png';
       missed++;
-      console.log(`you have missed ${missed} times`);
     }
   }
 
