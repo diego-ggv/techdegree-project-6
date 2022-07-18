@@ -60,22 +60,17 @@ console.log(phraseArray);
 const checkLetter = (btn) => {
   // const lettersArray = document.getElementsByClassName('letter');
   const lettersArray = document.querySelectorAll('.letter');
-  let matched = [];
+  let matched = null;
 
   for (let i = 0; i < lettersArray.length; i++) {
 
     if (lettersArray[i].textContent.includes(btn.textContent)) {
+      matched = [];
       lettersArray[i].className = 'show';
-
       matched.push(lettersArray[i]);
     }
-    else {
-      matched = null;
-    }
-
   }
 
-  console.log(`matched value is ${matched}`);
   return matched;
 };
 // checkLetter(test);
@@ -98,9 +93,9 @@ qwerty.addEventListener('click', (e) => {
     button.className = "chosen";
     button.disabled = true;
 
-    if (letterFound === null){
-      missed ++;
-      console.log(`you have missed ${missed} times`)
+    if (letterFound === null) {
+      missed++;
+      console.log(`you have missed ${missed} times`);
     }
   }
 
