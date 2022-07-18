@@ -1,15 +1,14 @@
 // document.addEventListener("DOMContentLoaded", () => {
 
 const qwerty = document.getElementById('qwerty');
-// const phrase = document.getElementById('phrase');
 const start = document.querySelector('.start');
 const ul = document.querySelector('#phrase ul');
+const overlay = document.getElementById('overlay');
 
 let missed = 0;
 
 // Start the Game
 start.addEventListener('click', (e) => {
-  const overlay = document.getElementById('overlay');
 
   if (e.target.tagName === "BUTTON") {
     overlay.style.display = "none";
@@ -74,9 +73,28 @@ const checkLetter = (btn) => {
 };
 
 // check if the game has been won or lost
-//   const checkWin = () => {
-//
-//   };
+const checkWin = () => {
+  const liShow = document.getElementsByClassName('show');
+  const btnReset = document.querySelector('.btn__reset');
+  const banner = document.querySelector('.title');
+
+
+  if (phraseArray.length === liShow.length) {
+
+    overlay.className = 'win';
+    overlay.style.display = 'flex';
+    banner.textContent = "YOU WIN!";
+    btnReset.textContent = 'Restart Game';
+    console.log('Congrats you have won');
+  }
+  if (missed >= 5) {
+    overlay.className = 'lose';
+    overlay.style.display = 'flex';
+    banner.textContent = "GAME OVER!";
+    btnReset.textContent = 'Restart Game';
+  }
+
+};
 
 // Listen for the start game button to be pressed
 
@@ -97,6 +115,7 @@ qwerty.addEventListener('click', (e) => {
       hearts[missed].src = 'images/lostHeart.png';
       missed++;
     }
+    checkWin();
   }
 
 });
