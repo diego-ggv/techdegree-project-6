@@ -1,0 +1,22 @@
+// =============================================
+//              Mixins
+// =============================================
+
+// Gives Images a popUp effect
+@mixin img-effect() {
+  transition: $transition;
+  transform: rotateY(360deg);
+
+}
+
+@mixin font($color:$color-keys){
+  font-size: $font-size-large;
+
+  height: 65px;
+  width: 65px;
+  margin-top: 20px;
+  margin-right: 5px;
+  background: $color-neutral-light;
+  color: $color;
+  border-radius: 5px;
+}

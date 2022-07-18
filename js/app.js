@@ -9,7 +9,7 @@ overlay.addEventListener('click', (e) => {
   if (e.target.tagName === "BUTTON") {
     const button = e.target;
     const action = button.className;
-    
+
     const nameAction = {
       start: () => {
         overlay.style.display = "none";
@@ -20,7 +20,7 @@ overlay.addEventListener('click', (e) => {
     };
     nameAction[action]();
   }
-    
+
 });
 
 // Return a random phrase from an array
@@ -57,7 +57,7 @@ const addPhraseToDisplay = (array) => {
   }
 };
 // Stores generated array in a new constant
-const phraseArray = getRandomPhraseAsArray(test);
+const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
 addPhraseToDisplay(phraseArray);
 console.log(phraseArray);
@@ -79,24 +79,24 @@ const checkLetter = (btn) => {
 
 // check if the game has been won or lost
 const checkWin = () => {
-  const liShow = document.getElementsByClassName('show');
+  const liLetter = document.getElementsByClassName('letter');
   const btnReset = document.querySelector('#btn__reset');
   const banner = document.querySelector('.title');
 
   //TODO: cleanup code, DRY
-  if (phraseArray.length === liShow.length) {
+  if (liLetter.length === 0) {
     overlay.className = 'win';
     overlay.style.display = 'flex';
     banner.textContent = "YOU WIN!";
     btnReset.textContent = 'Restart Game';
-    btnReset.className = 'restart'
+    btnReset.className = 'restart';
   }
   if (missed >= 5) {
     overlay.className = 'lose';
     overlay.style.display = 'flex';
     banner.textContent = "GAME OVER!";
     btnReset.textContent = 'Restart Game';
-    btnReset.className = 'restart'
+    btnReset.className = 'restart';
   }
 };
 
@@ -111,7 +111,7 @@ qwerty.addEventListener('click', (e) => {
 
     if (letterFound === null) {
       const hearts = document.querySelectorAll('.tries img');
-
+      button.style.backgroundColor = '#D94545';
       hearts[missed].src = 'images/lostHeart.png';
       missed++;
     }

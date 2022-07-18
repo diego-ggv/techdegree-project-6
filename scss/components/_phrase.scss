@@ -1,0 +1,14 @@
+/* Phrase */
+
+.letter {
+  @include font($color:transparent);
+}
+
+.space {
+  width: 20px;
+}
+
+.show {
+  @include font();
+  @include img-effect();
+}

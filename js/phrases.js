@@ -15,7 +15,7 @@ const phrases = [
 ];
 
 const test = [
-  'will',
-  'bull',
-  'address'
+  'will space',
+  'bull space',
+  'address spaces'
 ];

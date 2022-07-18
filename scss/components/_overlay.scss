@@ -1,0 +1,50 @@
+/* Title */
+
+.header {
+  color: $color-start;
+}
+
+/* Overlay */
+
+#overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  color: #FFFFFF;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+}
+
+.title {
+  color: #FFF;
+}
+
+.start {
+  background-color: $color-start;
+  //& a {
+  //  color: var(--color-win);
+  //}
+}
+
+
+.win {
+  background-color: $color-win;
+  //& a {
+  //  color: var(--color-win);
+  //}
+}
+
+
+.lose {
+  background-color: $color-lose;
+//& a {
+  //  color: var(--color-lose);
+  //}
+}
+
+
+
