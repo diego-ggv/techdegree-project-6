@@ -1,20 +1,16 @@
 // document.addEventListener("DOMContentLoaded", () => {
-
 const qwerty = document.getElementById('qwerty');
-const start = document.querySelector('.start');
 const ul = document.querySelector('#phrase ul');
 const overlay = document.getElementById('overlay');
-
 let missed = 0;
 
 // Start the Game
-start.addEventListener('click', (e) => {
-
-  if (e.target.tagName === "BUTTON") {
+overlay.addEventListener('click', (e) => {
+  if (e.target.tagName === "BUTTON"
+    && e.target.textContent.toLowerCase() === 'start game') {
     overlay.style.display = "none";
   }
 });
-
 
 // Return a random phrase from an array
 const getRandomPhraseAsArray = (arr) => {
@@ -51,7 +47,7 @@ const addPhraseToDisplay = (array) => {
 };
 // Stores generated array in a new constant
 const phraseArray = getRandomPhraseAsArray(test);
-// Calls addPhraseToDisplay function and takes phraseArray as parameter
+// Calls addPhraseToDisplay function and passes phraseArray as parameter
 addPhraseToDisplay(phraseArray);
 console.log(phraseArray);
 
@@ -61,14 +57,12 @@ const checkLetter = (btn) => {
   let matched = null;
 
   for (let i = 0; i < lettersArray.length; i++) {
-
     if (lettersArray[i].textContent.includes(btn.textContent)) {
       matched = [];
       lettersArray[i].className = 'show';
       matched.push(lettersArray[i]);
     }
   }
-
   return matched;
 };
 
@@ -78,9 +72,7 @@ const checkWin = () => {
   const btnReset = document.querySelector('.btn__reset');
   const banner = document.querySelector('.title');
 
-
   if (phraseArray.length === liShow.length) {
-
     overlay.className = 'win';
     overlay.style.display = 'flex';
     banner.textContent = "YOU WIN!";
@@ -96,12 +88,16 @@ const checkWin = () => {
 
 };
 
-// Listen for the start game button to be pressed
-
+// Listen for the restart game button to be pressed
+overlay.addEventListener('click', (button) => {
+  if (button.target.tagName === 'BUTTON'
+    && button.target.textContent.toLowerCase() === 'restart game') {
+    window.location.reload(true);
+  }
+});
 
 // Listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
-
   if (e.target.tagName === "BUTTON") {
     const button = e.target;
     const letterFound = checkLetter(button);
