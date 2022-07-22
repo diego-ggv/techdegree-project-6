@@ -4,24 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector('#phrase ul');
   let missed = 0;
 
-// Start the Game
-  overlay.addEventListener('click', (e) => {
-    if (e.target.tagName === "BUTTON") {
-      const button = e.target;
-      const action = button.className;
+  /* // Start the Game
+   overlay.addEventListener('click', (e) => {
+   if (e.target.tagName === "BUTTON") {
+   const button = e.target;
+   const action = button.className;
 
-      const nameAction = {
-        start: () => {
-          overlay.style.display = "none";
-        },
-        restart: () => {
-          window.location.reload();
-        },
-      };
-      nameAction[action]();
-    }
+   const nameAction = {
+   start: () => {
+   overlay.style.display = "none";
+   },
+   restart: console.log('object'),
+   // restart: () => {
+   //   // window.location.reload();
+   // },
+   };
+   nameAction[action]();
+   }
 
-  });
+   }); */
 
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
-  console.log(phraseArray);
+  console.log(`${phraseArray} 1`);
 
 // Check if the letter is in the phrase
   const checkLetter = (btn) => {
@@ -91,11 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
       btnReset.textContent = 'Restart Game';
       btnReset.className = 'restart';
     };
-    
+
     if (liLetter.length === 0) {
       wonLost('win', 'YOU WON!');
     }
-    if (missed >= 5) {
+    if (missed >= 1) {
       wonLost('lose', 'GAME OVER!');
     }
   };
@@ -118,4 +119,53 @@ document.addEventListener("DOMContentLoaded", () => {
       checkWin();
     }
   });
+
+
+  // Start the Game
+  overlay.addEventListener('click', (e) => {
+
+    const reload = () => {
+      const removeAllChildNodes = (parent) => {
+        while (parent.firstChild) {
+          parent.removeChild(parent.firstChild);
+        }
+      };
+      removeAllChildNodes(ul);
+      console.log('reloading');
+
+      overlay.style.display = "none";
+      const phraseArray = getRandomPhraseAsArray(phrases);
+      addPhraseToDisplay(phraseArray);
+      ul.style.removeProperty("display");
+
+      const keystrokes = document.querySelectorAll('#qwerty .key-row button');
+      keystrokes.disable = false;
+      for (let i = 0; i < keystrokes.length; i++) {
+        keystrokes[i].classList.remove('chosen');
+        // keystrokes[]
+        // keystrokes[i].className = '';
+      }
+
+    };
+
+    if (e.target.tagName === "BUTTON") {
+      const button = e.target;
+      const action = button.className;
+
+
+      const nameAction = {
+        start: () => {
+          overlay.style.display = "none";
+        },
+        restart: () => {
+          reload();
+          // Complete page reload
+          // window.location.reload();
+        },
+      };
+      nameAction[action]();
+    }
+  });
+
+
 });
