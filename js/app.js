@@ -124,43 +124,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start the Game
   overlay.addEventListener('click', (e) => {
 
-    const reload = () => {
-      const removeAllChildNodes = (parent) => {
-        while (parent.firstChild) {
-          parent.removeChild(parent.firstChild);
-        }
-      };
-      removeAllChildNodes(ul);
-      console.log('reloading');
-
-      overlay.style.display = "none";
-      const phraseArray = getRandomPhraseAsArray(phrases);
-      addPhraseToDisplay(phraseArray);
-      ul.style.removeProperty("display");
-
-      const keystrokes = document.querySelectorAll('#qwerty .key-row button');
-      keystrokes.disable = false;
-      for (let i = 0; i < keystrokes.length; i++) {
-        keystrokes[i].classList.remove('chosen');
-        // keystrokes[]
-        // keystrokes[i].className = '';
-      }
-
-    };
-
     if (e.target.tagName === "BUTTON") {
       const button = e.target;
       const action = button.className;
 
 
       const nameAction = {
-        start: () => {
+        start: function () {
           overlay.style.display = "none";
         },
-        restart: () => {
-          reload();
-          // Complete page reload
-          // window.location.reload();
+        restart: function () {
+          const removeAllChildNodes = (parent) => {
+            while (parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+            }
+          };
+          removeAllChildNodes(ul);
+          console.log('reloading');
+
+          overlay.style.display = "none";
+          const phraseArray = getRandomPhraseAsArray(phrases);
+          addPhraseToDisplay(phraseArray);
+          ul.style.removeProperty("display");
+
+          const keystrokes = document.querySelectorAll('#qwerty .key-row button');
+          keystrokes.disable = false;
+          for (let i = 0; i < keystrokes.length; i++) {
+            keystrokes[i].classList.remove('chosen');
+            // keystrokes[]
+            // keystrokes[i].className = '';
+          }
         },
       };
       nameAction[action]();
