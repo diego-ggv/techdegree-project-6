@@ -5,11 +5,17 @@
   justify-content: center;
 }
 
-.chosen {
-  background: $color-neutral;
-  border-radius: 5px;
-  font-size: $font-size-medium;
-  color: #FFFFFF;
+.correct {
+  @include button($bg: $color-neutral);
+
+  &:hover {
+    border: 2px solid transparent;
+  }
+}
+
+.incorrect {
+  @include button($bg: $color-lose);
+
   &:hover {
     border: 2px solid transparent;
   }
@@ -22,15 +28,17 @@
   border-radius: 5px;
   font-size: $font-size-medium;
 
-  &:hover{
-    @include img-effect(){
-    background: $color-neutral;
-    color: $color-keys-light;
-    };
+  &:hover {
+    @include img-effect() {
+      background: $color-neutral;
+      color: $color-keys-light;
+    }
+  ;
   }
 }
 
-.tries img{
+.tries img {
   max-height: 30px;
   max-width: 30px;
 }
+

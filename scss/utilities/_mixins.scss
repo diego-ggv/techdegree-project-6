@@ -6,10 +6,10 @@
 @mixin img-effect($transform: null) {
   transition: $transition;
   transform: $transform;
-@content;
+  @content;
 }
 
-@mixin font($color:$color-keys){
+@mixin font($color:$color-keys) {
   font-size: $font-size-large;
   background: $color-neutral-light;
   color: $color;
@@ -18,4 +18,15 @@
   margin-top: 20px;
   margin-right: 5px;
   border-radius: 5px;
+  @content
+}
+
+@mixin button($bg: null, $color: null) {
+  background: $bg;
+  border: 2px solid transparent;
+  //border-radius: 5px;
+  margin: 6px;
+  padding: .5rem 1rem;
+  color: $color;
+  @content;
 }

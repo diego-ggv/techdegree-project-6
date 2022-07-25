@@ -94,13 +94,23 @@ button:hover {
   justify-content: center;
 }
 
-.chosen {
+.correct {
   background: #445069;
-  border-radius: 5px;
-  font-size: 20px;
-  color: #FFFFFF;
+  border: 2px solid transparent;
+  margin: 6px;
+  padding: 0.5rem 1rem;
 }
-.chosen:hover {
+.correct:hover {
+  border: 2px solid transparent;
+}
+
+.incorrect {
+  background: #D94545;
+  border: 2px solid transparent;
+  margin: 6px;
+  padding: 0.5rem 1rem;
+}
+.incorrect:hover {
   border: 2px solid transparent;
 }
 
