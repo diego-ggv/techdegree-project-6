@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
    });
    */
 
-
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
     // Generates a random value taking the length of the given array as max value
@@ -64,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
+  console.log(phraseArray);
 
 // Checks if the selected letter is in the phrase array
   const checkLetter = (btn) => {
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (liLetter.length === 0) {
       wonLost('win', 'YOU WON!');
     }
-    if (missed >= 1) {
+    if (missed >= 5) {
       wonLost('lose', 'GAME OVER!');
     }
   };
@@ -109,14 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const button = e.target;
       const letterFound = checkLetter(button);
 
-      button.className = "chosen";
+
       button.disabled = true;
 
       if (letterFound === null) {
         const hearts = document.querySelectorAll('.tries img');
-        button.style.backgroundColor = '#D94545';
+        button.className = 'incorrect';
         hearts[missed].src = 'images/lostHeart.png';
         missed++;
+      }
+      else {
+        button.className = "correct";
       }
       checkWin();
     }
@@ -129,32 +132,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const button = e.target;
       const action = button.className;
 
-
       const nameAction = {
-        start: function () {
+        start: () => {
           overlay.style.display = "none";
         },
-        restart: function () {
+        restart: () => {
+          const keystrokes = document.querySelectorAll('#qwerty .key-row button');
+          const hearts = document.querySelectorAll('.tries img');
+          const phraseArray = getRandomPhraseAsArray(phrases);
+
           const removeAllChildNodes = (parent) => {
             while (parent.firstChild) {
               parent.removeChild(parent.firstChild);
             }
           };
+
           removeAllChildNodes(ul);
-          console.log('reloading');
-
-          overlay.style.display = "none";
-          const phraseArray = getRandomPhraseAsArray(phrases);
           addPhraseToDisplay(phraseArray);
-          ul.style.removeProperty("display");
 
-          const keystrokes = document.querySelectorAll('#qwerty .key-row button');
-          keystrokes.disable = false;
+          ul.style.removeProperty("display");
+          overlay.style.display = "none";
+
           for (let i = 0; i < keystrokes.length; i++) {
-            keystrokes[i].classList.remove('chosen');
-            // keystrokes[]
-            // keystrokes[i].className = '';
+            keystrokes[i].className = '';
+            keystrokes[i].disabled = false;
           }
+          for (let i = 0; i < hearts.length; i++) {
+            hearts[i].src = 'images/liveHeart.png';
+          }
+
+          missed = 0;
+          console.log(phraseArray);
         },
       };
       nameAction[action]();
@@ -164,8 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /*
- TODO:
- - use :nth-of-type to select buttons with the class "chosen"
- - use :disabled to select an element that is in a disabled state
- - use .removeAttr('disabled') to enable disable elements
+ TODO: 
+  - comment document
  */
