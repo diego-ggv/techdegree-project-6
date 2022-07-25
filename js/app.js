@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector('#phrase ul');
   let missed = 0;
 
-// Start the Game
+<<<<<<< HEAD
+  // Start the Game
   overlay.addEventListener('click', (e) => {
     if (e.target.tagName === "BUTTON") {
       const button = e.target;
@@ -15,13 +16,34 @@ document.addEventListener("DOMContentLoaded", () => {
           overlay.style.display = "none";
         },
         restart: () => {
-          window.location.reload();
+          ul.remove();
+          // window.location.reload();
         },
       };
       nameAction[action]();
     }
-
   });
+=======
+  /* // Start the Game
+   overlay.addEventListener('click', (e) => {
+   if (e.target.tagName === "BUTTON") {
+   const button = e.target;
+   const action = button.className;
+
+   const nameAction = {
+   start: () => {
+   overlay.style.display = "none";
+   },
+   restart: console.log('object'),
+   // restart: () => {
+   //   // window.location.reload();
+   // },
+   };
+   nameAction[action]();
+   }
+
+   }); */
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
@@ -60,9 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
-  console.log(phraseArray);
+<<<<<<< HEAD
+  // console.log(phraseArray);
+=======
+  console.log(`${phraseArray} 1`);
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
-// Check if the letter is in the phrase
+// Checks if the selected letter is in the phrase array
   const checkLetter = (btn) => {
     const lettersArray = document.querySelectorAll('.letter');
     let matched = null;
@@ -91,11 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
       btnReset.textContent = 'Restart Game';
       btnReset.className = 'restart';
     };
-    
+
     if (liLetter.length === 0) {
       wonLost('win', 'YOU WON!');
     }
-    if (missed >= 5) {
+    if (missed >= 1) {
       wonLost('lose', 'GAME OVER!');
     }
   };
@@ -118,4 +144,64 @@ document.addEventListener("DOMContentLoaded", () => {
       checkWin();
     }
   });
+<<<<<<< HEAD
 });
+
+const reload = () => {
+    
+}
+
+
+
+/*
+ TODO:
+ - use :nth-of-type to select buttons with the class "chosen"
+ - use :disabled to select an element that is in a disabled state
+ - use .removeAttr('disabled') to enable disable elements
+  */
+
+=======
+
+
+  // Start the Game
+  overlay.addEventListener('click', (e) => {
+
+    if (e.target.tagName === "BUTTON") {
+      const button = e.target;
+      const action = button.className;
+
+
+      const nameAction = {
+        start: function () {
+          overlay.style.display = "none";
+        },
+        restart: function () {
+          const removeAllChildNodes = (parent) => {
+            while (parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+            }
+          };
+          removeAllChildNodes(ul);
+          console.log('reloading');
+
+          overlay.style.display = "none";
+          const phraseArray = getRandomPhraseAsArray(phrases);
+          addPhraseToDisplay(phraseArray);
+          ul.style.removeProperty("display");
+
+          const keystrokes = document.querySelectorAll('#qwerty .key-row button');
+          keystrokes.disable = false;
+          for (let i = 0; i < keystrokes.length; i++) {
+            keystrokes[i].classList.remove('chosen');
+            // keystrokes[]
+            // keystrokes[i].className = '';
+          }
+        },
+      };
+      nameAction[action]();
+    }
+  });
+
+
+});
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
