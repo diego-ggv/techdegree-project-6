@@ -4,41 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector('#phrase ul');
   let missed = 0;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // Start the Game
-  overlay.addEventListener('click', (e) => {
-    if (e.target.tagName === "BUTTON") {
-      const button = e.target;
-      const action = button.className;
+  /*
 
-      const nameAction = {
-        start: () => {
-          overlay.style.display = "none";
-        },
-        restart: () => {
-          ul.remove();
-          // window.location.reload();
-        },
-      };
-      nameAction[action]();
-    }
-  });
-=======
-  /* // Start the Game
+   // Start the Game
    overlay.addEventListener('click', (e) => {
    if (e.target.tagName === "BUTTON") {
    const button = e.target;
    const action = button.className;
 
-=======
-  /* // Start the Game
-   overlay.addEventListener('click', (e) => {
-   if (e.target.tagName === "BUTTON") {
-   const button = e.target;
-   const action = button.className;
-
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
    const nameAction = {
    start: () => {
    overlay.style.display = "none";
@@ -50,12 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
    };
    nameAction[action]();
    }
+   });
+   */
 
-   }); */
-<<<<<<< HEAD
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
-=======
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
@@ -94,15 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // console.log(phraseArray);
-=======
-  console.log(`${phraseArray} 1`);
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
-=======
-  console.log(`${phraseArray} 1`);
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
 // Checks if the selected letter is in the phrase array
   const checkLetter = (btn) => {
@@ -160,27 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
       checkWin();
     }
   });
-<<<<<<< HEAD
-<<<<<<< HEAD
-});
-
-const reload = () => {
-    
-}
-
-
-
-/*
- TODO:
- - use :nth-of-type to select buttons with the class "chosen"
- - use :disabled to select an element that is in a disabled state
- - use .removeAttr('disabled') to enable disable elements
-  */
-
-=======
-=======
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
-
 
   // Start the Game
   overlay.addEventListener('click', (e) => {
@@ -220,11 +160,12 @@ const reload = () => {
       nameAction[action]();
     }
   });
+});
 
 
-<<<<<<< HEAD
-});
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
-=======
-});
->>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
+/*
+ TODO:
+ - use :nth-of-type to select buttons with the class "chosen"
+ - use :disabled to select an element that is in a disabled state
+ - use .removeAttr('disabled') to enable disable elements
+ */
