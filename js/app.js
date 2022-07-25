@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let missed = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Start the Game
   overlay.addEventListener('click', (e) => {
     if (e.target.tagName === "BUTTON") {
@@ -30,6 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
    const button = e.target;
    const action = button.className;
 
+=======
+  /* // Start the Game
+   overlay.addEventListener('click', (e) => {
+   if (e.target.tagName === "BUTTON") {
+   const button = e.target;
+   const action = button.className;
+
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
    const nameAction = {
    start: () => {
    overlay.style.display = "none";
@@ -43,6 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 
    }); */
+<<<<<<< HEAD
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
+=======
 >>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
 // Return a random phrase from an array
@@ -83,7 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
 <<<<<<< HEAD
+<<<<<<< HEAD
   // console.log(phraseArray);
+=======
+  console.log(`${phraseArray} 1`);
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 =======
   console.log(`${phraseArray} 1`);
 >>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
@@ -145,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 <<<<<<< HEAD
+<<<<<<< HEAD
 });
 
 const reload = () => {
@@ -161,6 +178,8 @@ const reload = () => {
   */
 
 =======
+=======
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
 
 
   // Start the Game
@@ -203,5 +222,9 @@ const reload = () => {
   });
 
 
+<<<<<<< HEAD
+});
+>>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
+=======
 });
 >>>>>>> cf9fe3fc6772b05d08d8c96e57cbfd95904523eb
