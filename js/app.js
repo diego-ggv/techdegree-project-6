@@ -4,28 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector('#phrase ul');
   let missed = 0;
 
-  /*
-
-   // Start the Game
-   overlay.addEventListener('click', (e) => {
-   if (e.target.tagName === "BUTTON") {
-   const button = e.target;
-   const action = button.className;
-
-   const nameAction = {
-   start: () => {
-   overlay.style.display = "none";
-   },
-   restart: console.log('object'),
-   // restart: () => {
-   //   // window.location.reload();
-   // },
-   };
-   nameAction[action]();
-   }
-   });
-   */
-
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
     // Generates a random value taking the length of the given array as max value
@@ -67,23 +45,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Checks if the selected letter is in the phrase array
   const checkLetter = (btn) => {
+    // Stores all LI elements with a letter class name
     const lettersArray = document.querySelectorAll('.letter');
+    // Creates an empty variable to store all matching letters
     let matched = null;
-
+    // Loops through all letters
     for (let i = 0; i < lettersArray.length; i++) {
+      // if the letter text content includes the button text content
       if (lettersArray[i].textContent.includes(btn.textContent)) {
+        // makes matched an empty array
         matched = [];
+        // current letter class name is set equal to 'show'
         lettersArray[i].className = 'show';
+        // adds current letter to matched array
         matched.push(lettersArray[i]);
       }
     }
+    // returns array with all matching letters
     return matched;
   };
 
-// check if the game has been won or lost
+  // check if the game has been won or lost
   const checkWin = () => {
+    // stores all LI elements with the class name 'letter'
     const liLetter = document.getElementsByClassName('letter');
+    // stores the button with the ID btn_reset
     const btnReset = document.querySelector('#btn__reset');
+    // stores 
     const banner = document.querySelector('.title');
 
     const wonLost = (result, text) => {
@@ -173,5 +161,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*
  TODO: 
-  - comment document
+ - comment document
  */
