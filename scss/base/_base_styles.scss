@@ -1,5 +1,6 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
   box-sizing: border-box;
@@ -22,6 +23,12 @@ h2 {
   text-transform: uppercase;
   font-family: 'Open Sans', sans-serif;
   font-size: $font-size-large;
+}
+
+.lose h2,
+.win h2 {
+  font-size: 60px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 button {
