@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const qwerty = document.getElementById('qwerty');
+  const keyboard = document.getElementById('qwerty');
   const overlay = document.getElementById('overlay');
   const ul = document.querySelector('#phrase ul');
   let missed = 0;
@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // Return a random phrase from an array
   const getRandomPhraseAsArray = (arr) => {
     // Generates a random value taking the length of the given array as max value
-    const i = Math.floor(Math.random() * arr.length);
+    const ranNum = Math.floor(Math.random() * arr.length);
     // Stores array in a constant taking random number as the array index value
-    const array = arr[i];
+    const array = arr[ranNum];
 
     // Returns a new created array of characters
     return array.split("");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < array.length; i++) {
       // Create a LI element
       const li = document.createElement('li');
-      // Pass array current index value as li text content
+      // Pass array's current index value as li text content
       li.textContent = array[i];
 
       //if LI text content is strictly equal to a space
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ul.appendChild(li);
     }
   };
-// Stores generated array in a new constant
+// Calls and stores generated array in a new constant
   const phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Checks if the selected letter is in the phrase array
   const checkLetter = (btn) => {
-    // Stores all LI elements with a letter class name
+    // Stores all LI elements with the 'letter' class name
     const lettersArray = document.querySelectorAll('.letter');
     // Creates an empty variable to store all matching letters
     let matched = null;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < lettersArray.length; i++) {
       // if the letter text content includes the button text content
       if (lettersArray[i].textContent.includes(btn.textContent)) {
-        // makes matched an empty array
+        // makes the variable matched an empty array
         matched = [];
         // current letter class name is set equal to 'show'
         lettersArray[i].className = 'show';
@@ -82,17 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
       btnReset.textContent = 'Restart Game';
       btnReset.className = 'restart';
     };
-
+    // const won = wonLost('win', 'YOU WON!');
     if (liLetter.length === 0) {
-      wonLost('win', 'YOU WON!');
+      setTimeout(() => wonLost('win', 'YOU WON!'),
+                 1500);
     }
     if (missed >= 5) {
-      wonLost('lose', 'GAME OVER!');
+      setTimeout(() => wonLost('lose', 'GAME OVER!'),
+                 1500);
     }
   };
 
 // Listen for the onscreen keyboard to be clicked
-  qwerty.addEventListener('click', (e) => {
+  keyboard.addEventListener('click', (e) => {
     if (e.target.tagName === "BUTTON") {
       const button = e.target;
       const letterFound = checkLetter(button);
@@ -161,5 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*
  TODO: 
- - comment document
+ - comment this (and all other possible CV documents)
+ - refactor this (and all other possible CV documents)
+ - use an API to retrieve random words
+ - add custom design
+ - add custom SVG animations
+ - start creating an portfolio showcase of all my work
+
  */
