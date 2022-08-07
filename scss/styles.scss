@@ -1,8 +1,16 @@
 // Utilities
-@import "utilities/index";
+@import "utilities/0-index";
 
 // Base Style
-@import "base/index";
+@import "base/0-index";
 
 // Components
-@import "components/index";
+@import "components/0-index";
+
+/*
+TODO:
+  - refractor folders 
+  - add reset
+  - add mobile layout
+  - add grid layout
+*/ 

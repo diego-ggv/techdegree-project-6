@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
   const keyboard = document.getElementById('qwerty');
   const overlay = document.getElementById('overlay');
   const ul = document.querySelector('#phrase ul');
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 // Calls and stores generated array in a new constant
-  const phraseArray = getRandomPhraseAsArray(phrases);
+  let phraseArray = getRandomPhraseAsArray(phrases);
 // Calls addPhraseToDisplay function and passes phraseArray as parameter
   addPhraseToDisplay(phraseArray);
   console.log(phraseArray);
@@ -48,19 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Stores all LI elements with the 'letter' class name
     const lettersArray = document.querySelectorAll('.letter');
     // Creates an empty variable to store all matching letters
-    let matched = null;
+    let matched = [];
+
     // Loops through all letters
     for (let i = 0; i < lettersArray.length; i++) {
       // if the letter text content includes the button text content
       if (lettersArray[i].textContent.includes(btn.textContent)) {
-        // makes the variable matched an empty array
-        matched = [];
         // current letter class name is set equal to 'show'
         lettersArray[i].className = 'show';
         // adds current letter to matched array
         matched.push(lettersArray[i]);
       }
     }
+
     // returns array with all matching letters
     return matched;
   };
@@ -93,28 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-// Listen for the onscreen keyboard to be clicked
-  keyboard.addEventListener('click', (e) => {
-    if (e.target.tagName === "BUTTON") {
-      const button = e.target;
-      const letterFound = checkLetter(button);
-
-
-      button.disabled = true;
-
-      if (letterFound === null) {
-        const hearts = document.querySelectorAll('.tries img');
-        button.className = 'incorrect';
-        hearts[missed].src = 'images/lostHeart.png';
-        missed++;
-      }
-      else {
-        button.className = "correct";
-      }
-      checkWin();
-    }
-  });
-
   // Start the Game
   overlay.addEventListener('click', (e) => {
 
@@ -129,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         restart: () => {
           const keystrokes = document.querySelectorAll('#qwerty .key-row button');
           const hearts = document.querySelectorAll('.tries img');
-          const phraseArray = getRandomPhraseAsArray(phrases);
+          let phraseArray = getRandomPhraseAsArray(phrases);
 
           const removeAllChildNodes = (parent) => {
             while (parent.firstChild) {
@@ -158,7 +136,30 @@ document.addEventListener("DOMContentLoaded", () => {
       nameAction[action]();
     }
   });
-});
+
+// Listen for the onscreen keyboard to be clicked
+  keyboard.addEventListener('click', (e) => {
+    if (e.target.tagName === "BUTTON") {
+      const button = e.target;
+      const letterFound = checkLetter(button);
+
+      button.disabled = true;
+
+      if (letterFound.length === 0) {
+        const hearts = document.querySelectorAll('.tries img');
+        button.className = 'incorrect';
+        hearts[missed].src = 'images/lostHeart.png';
+        missed++;
+      }
+      else {
+        button.className = "correct";
+      }
+      console.log(letterFound);
+      checkWin();
+    }
+  });
+
+// });
 
 
 /*
@@ -171,3 +172,4 @@ document.addEventListener("DOMContentLoaded", () => {
  - start creating an portfolio showcase of all my work
 
  */
+

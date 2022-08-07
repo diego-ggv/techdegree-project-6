@@ -28,7 +28,7 @@ h2 {
 .lose h2,
 .win h2 {
   font-size: 60px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', sans-serif;
 }
 
 button {
@@ -53,10 +53,13 @@ button {
   justify-content: space-around;
   height: 100%;
   max-height: 900px;
+  max-width: 900px;
   text-align: center;
+  margin: auto;
 }
 
 .section {
   width: 100%;
   padding: 10px;
 }
+
